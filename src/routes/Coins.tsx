@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
@@ -21,7 +22,7 @@ const CoinsList = styled.ul``;
 
 const Coin = styled.li`
     background-color: white;
-    color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.coinsTextColor};
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 10px;  
@@ -41,6 +42,7 @@ const Coin = styled.li`
 const Title = styled.h1`
     font-size: 30px;
     color: ${(props) => props.theme.accentColor};
+    font-weight: bold;
 `;
 
 const Loader = styled.span`
@@ -64,6 +66,8 @@ interface ICoin {
     is_active: boolean,
     type: string,
 }
+interface ICoinProps{
+}
 
 function Coins() {
     // {데이터 가져왔을시 실행, 가져온 데이터}
@@ -77,6 +81,7 @@ function Coins() {
             </Helmet>
             <Header>
                 <Title>Moon's Coin{isLoading ? "(loading)" : `(${data?.slice(0, 100).length})`}</Title>
+                <button>Toggle Mode</button>
             </Header>
             {isLoading ? (
                 <Loader>Loaing...</Loader>

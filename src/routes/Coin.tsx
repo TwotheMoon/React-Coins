@@ -53,6 +53,7 @@ const OverviewItem = styled.div`
 `;
 const Description = styled.p`
     margin: 20px 0px;
+    color: ${(props) => props.theme.coinsTextColor};
 `;
 
 const Taps = styled.div`
@@ -149,6 +150,9 @@ interface PriceData {
             volume_24h_change_24h: number;
         }
     };
+}
+
+interface ICoinProps{
 }
 
 function Coin() {

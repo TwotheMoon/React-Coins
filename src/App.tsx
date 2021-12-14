@@ -1,6 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Router from "./Router";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { darkTheme, lightTheme } from "./theme";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 const GlobalStyle = createGlobalStyle`
 // fonts
@@ -71,14 +74,18 @@ html, body, div, span, applet, object, iframe,
 `;
 
 function App() {
+   const isDark = useRecoilValue(isDarkAtom);
   return (
-    // 여러개의 컴포넌트 반환을 위해 유령 컴포넌트 생성
-    <>
+    <>      
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Router/>
       <ReactQueryDevtools initialIsOpen={true} />
-    </>
+    </ThemeProvider>
+    </>      
   );
 }
+
+
 
 export default App;
