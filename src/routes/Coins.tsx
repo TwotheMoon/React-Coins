@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
+import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -70,8 +72,9 @@ interface ICoinProps{
 }
 
 function Coins() {
-    // {데이터 가져왔을시 실행, 가져온 데이터}
     const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)   //api.ts fetchCoins 함수 이용
+    const setDarkAtom = useSetRecoilState(isDarkAtom);  // 수정할 아톰 가져오기
+    const toggleDarkAtom = () => setDarkAtom((prev) => !prev);  // setState 처럼 원하는 함수 내용으로 수정
     return (
         <Container>
             <Helmet>
@@ -81,7 +84,7 @@ function Coins() {
             </Helmet>
             <Header>
                 <Title>Moon's Coin{isLoading ? "(loading)" : `(${data?.slice(0, 100).length})`}</Title>
-                <button>Toggle Mode</button>
+                <button onClick={toggleDarkAtom}>Toggle Mode</button> 
             </Header>
             {isLoading ? (
                 <Loader>Loaing...</Loader>

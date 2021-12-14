@@ -21,7 +21,6 @@ function Chart({ coinId }: ChartProps) {
     const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () => fetchCoinHistory(coinId),
         { refetchInterval: 10000, }
     );
-    const isDark = useRecoilValue(isDarkAtom);
     return (
         <div>
             {isLoading ? ("Loading chart..."
@@ -39,7 +38,7 @@ function Chart({ coinId }: ChartProps) {
                 ]}
                 options={{
                     theme: {
-                        mode: isDark ? "dark" : "light",
+                        mode: "dark",
                     },
                     chart: {
                         height: 300,
