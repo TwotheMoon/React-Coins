@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { fetchCoinTickers } from "../api";
 
 const PriceWrapper = styled.div<{isPositive? : Boolean}>`
-    width: 440px;
+    Max-width: 480px;
     height: 40px;
     border-radius: 10px;
     background-color: white;
