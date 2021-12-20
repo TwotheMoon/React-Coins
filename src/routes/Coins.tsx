@@ -68,8 +68,6 @@ interface ICoin {
     is_active: boolean,
     type: string,
 }
-interface ICoinProps{
-}
 
 function Coins() {
     const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)   //api.ts fetchCoins 함수 이용
@@ -79,12 +77,12 @@ function Coins() {
         <Container>
             <Helmet>
                 <title>
-                Moon's Coin{isLoading ? "(loading)" : `(${data?.slice(0, 100).length})`}
+                    Moon's Coin{isLoading ? "(loading)" : `(${data?.slice(0, 100).length})`}
                 </title>
             </Helmet>
             <Header>
                 <Title>Moon's Coin{isLoading ? "(loading)" : `(${data?.slice(0, 100).length})`}</Title>
-                <button onClick={toggleDarkAtom}>Toggle Mode</button> 
+                <button onClick={toggleDarkAtom}>Toggle Mode</button>
             </Header>
             {isLoading ? (
                 <Loader>Loaing...</Loader>

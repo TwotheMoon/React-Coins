@@ -152,8 +152,6 @@ interface PriceData {
     };
 }
 
-interface ICoinProps{
-}
 
 function Coin() {
     const { coinId } = useParams<RouteParams>();
