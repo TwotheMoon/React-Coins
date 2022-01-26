@@ -35,14 +35,15 @@ const Loader = styled.span`
 const Overview = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     border-radius: 10px;
+    background-color: ${(props) => props.theme.overviewColor};
 `;
 const OverviewItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: ${(props) => props.theme.coinsTextColor};
 
     span:first-child {
         font-size: 10px;
@@ -71,7 +72,8 @@ const Tap = styled.span<{ isActive: boolean }>`
     background-color: rgba(0, 0, 0, 0.5);
     padding: 7px 0px;
     border-radius: 10px;
-    color: ${(props) => props.isActive ? props.theme.accentColor : props.theme.textColor};
+    background-color: ${(props) => props.theme.overviewColor};
+    color: ${(props) => props.isActive ? props.theme.accentColor : props.theme.coinsTextColor};
 `;
 
 const Backspace = styled.div`
@@ -82,6 +84,7 @@ const Backspace = styled.div`
     justify-content: center;
     border-radius: 10px;
     font-size: 30px;
+    color: white;
 `;
 
 const BinWrapper = styled.div``;

@@ -7,5 +7,7 @@ declare module "styled-components" {
         coinsTextColor: string;
         bgColor: string;
         accentColor: string;
+        boxColor: string;
+        overviewColor: string;
     }
 }
